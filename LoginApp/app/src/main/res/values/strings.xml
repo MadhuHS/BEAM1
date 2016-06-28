@@ -1,0 +1,12 @@
+<resources>
+    <string name="app_name">LoginApp</string>
+    <string name="username">jspiders</string>
+    <string name="password">12345</string>
+    <string name="log_succes">Login successful</string>
+    <string name="hint_username">username </string>
+    <string name="hint_password">password </string>
+    <string name="loginbtn_lable">Login </string>
+
+
+
+</resources>
