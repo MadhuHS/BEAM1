@@ -9,9 +9,19 @@
     android:paddingTop="@dimen/activity_vertical_margin"
     tools:context="com.jspiders.moblie.imdbratingapp.MainActivity">
 
-    <TextView
+    <ListView
+        android:layout_width="wrap_content"
+        android:layout_height="200dp"
+        android:id="@+id/lvmovies"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentStart="true" />
+
+    <ImageView
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Hello World!"
-        android:id="@+id/tvresponse" />
+        android:layout_height="500dp"
+        android:src="@mipmap/ic_launcher"
+        android:layout_below="@+id/lvmovies"
+        android:id="@+id/ivposter"
+        android:layout_centerVertical="true"
+        android:layout_centerHorizontal="true" />
 </RelativeLayout>

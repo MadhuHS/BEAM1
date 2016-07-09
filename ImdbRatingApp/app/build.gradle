@@ -24,7 +24,8 @@ dependencies {
     testCompile 'junit:junit:4.12'
     compile 'com.android.support:appcompat-v7:23.4.0'
     compile 'com.loopj.android:android-async-http:1.4.9'
-
+    compile group: 'com.google.code.gson', name: 'gson', version: '2.7'
+    compile 'com.squareup.picasso:picasso:2.5.2'
 
 
 }
