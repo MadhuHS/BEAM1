@@ -2,9 +2,11 @@ package com.jspiders.moblie.imdbratingapp;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.widget.ArrayAdapter;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.TextView;
 
@@ -23,13 +25,16 @@ public class MainActivity extends AppCompatActivity {
     ListView movieslv;
     ArrayList<String> titles;
     ImageView posteriv;
+    RecyclerView recyclerView;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.main_activity_recyclerview);
 
-        movieslv =(ListView) findViewById(R.id.lvmovies);
-        posteriv = (ImageView) findViewById(R.id.ivposter);
+        /*movieslv =(ListView) findViewById(R.id.lvmovies);
+        posteriv = (ImageView) findViewById(R.id.ivposter);*/
+
+        recyclerView = (RecyclerView) findViewById(R.id.rvmovieslist);
 
         AsyncHttpClient client = new AsyncHttpClient();
 
@@ -51,11 +56,12 @@ public class MainActivity extends AppCompatActivity {
                     titles.add(s.getTitle());
                 }
 
-                ArrayAdapter<String> adapter = new ArrayAdapter<String>(MainActivity.this,android.R.layout.simple_list_item_1,titles);
+                /*ArrayAdapter<String> adapter = new ArrayAdapter<String>(MainActivity.this,android.R.layout.simple_list_item_1,titles);
                 movieslv.setAdapter(adapter);
 
                 Response.Search s1 =  list.get(0);
                 Picasso.with(MainActivity.this).load(s1.getPoster()).into(posteriv);
+*/
 
 
 

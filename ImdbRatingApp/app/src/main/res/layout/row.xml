@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="80dp"
+    android:background="@color/colorPrimary"
+    android:orientation="vertical">
+
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/ivposter"
+        android:src="@mipmap/ic_launcher"
+        android:layout_marginLeft="@dimen/activity_horizontal_margin"
+        android:layout_marginTop="@dimen/activity_vertical_margin"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentStart="true" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:text="Large Text"
+        android:id="@+id/tvmuvTitle"
+        android:layout_marginLeft="@dimen/activity_horizontal_margin"
+        android:layout_marginStart="21dp"
+        android:layout_alignTop="@+id/ivposter"
+        android:layout_toEndOf="@+id/ivposter" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceSmall"
+        android:text="Small Text"
+        android:layout_marginTop="8dp"
+        android:id="@+id/tvextra"
+        android:layout_below="@+id/tvmuvTitle"
+        android:layout_alignStart="@+id/tvmuvTitle" />
+</RelativeLayout>
