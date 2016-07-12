@@ -39,13 +39,25 @@
         android:layout_alignParentStart="true"
         android:layout_alignEnd="@+id/etusername" />
 
+
+
     <Button
         android:layout_width="match_parent"
         android:layout_height="60dp"
         android:text="@string/loginbtn_lable"
         android:background="@color/colorPrimary"
         android:id="@+id/btnlogin"
-        android:layout_marginTop="20dp"
+        android:layout_below="@+id/cbrmbrpwd"
+        android:layout_alignParentStart="true" />
+
+    <CheckBox
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:layout_marginBottom="8dp"
+        android:text="Remember Password"
+        android:id="@+id/cbrmbrpwd"
         android:layout_below="@+id/etpassword"
-        android:layout_centerHorizontal="true" />
+        android:layout_alignParentStart="true"
+        android:checked="false" />
 </RelativeLayout>

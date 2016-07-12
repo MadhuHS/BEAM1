@@ -2,8 +2,10 @@ package com.jspiders.moblie.imdbratingapp;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
+import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
@@ -35,6 +37,9 @@ public class MainActivity extends AppCompatActivity {
         posteriv = (ImageView) findViewById(R.id.ivposter);*/
 
         recyclerView = (RecyclerView) findViewById(R.id.rvmovieslist);
+        LinearLayoutManager layoutManager = new LinearLayoutManager(MainActivity.this);
+        layoutManager.setOrientation(layoutManager.VERTICAL);
+        recyclerView.setLayoutManager(layoutManager);
 
         AsyncHttpClient client = new AsyncHttpClient();
 
@@ -48,13 +53,30 @@ public class MainActivity extends AppCompatActivity {
                 Response responseobj = gson.fromJson(jsonresponse,Response.class);
                 ArrayList<Response.Search> list =(ArrayList<Response.Search>) responseobj.getSearch();
 
-                titles = new ArrayList<String>();
+                CustomAdapter adapter = new CustomAdapter(MainActivity.this,list);
+                recyclerView.setAdapter(adapter);
+
+                recyclerView.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view)
+                    {
+
+                    }
+                });
+
+
+
+
+
+
+
+                /*titles = new ArrayList<String>();
 
                 for (Response.Search s:list)
                 {
                     Log.d("[MOVIES TITLE]",s.getTitle());
                     titles.add(s.getTitle());
-                }
+                }*/
 
                 /*ArrayAdapter<String> adapter = new ArrayAdapter<String>(MainActivity.this,android.R.layout.simple_list_item_1,titles);
                 movieslv.setAdapter(adapter);
