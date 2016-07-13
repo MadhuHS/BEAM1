@@ -36,9 +36,12 @@ public class MainActivity extends AppCompatActivity {
         loginbtn = (Button) findViewById(R.id.btnlogin);
         rmbrpwdCb = (CheckBox) findViewById(R.id.cbrmbrpwd);
 
-        SharedPreferences preferences = getSharedPreferences("userdet",Context.MODE_PRIVATE);
-        usernameet.setText(preferences.getString("username","n/a"));
-        passwordet.setText(preferences.getString("password","n/a"));
+        if (readUserDetails()==true)
+        {
+            Intent intent = new Intent(MainActivity.this,Main2Activity.class);
+            startActivity(intent);
+        }
+
 
 
         loginbtn.setOnClickListener(new View.OnClickListener()
@@ -55,13 +58,12 @@ public class MainActivity extends AppCompatActivity {
 
                     if(rmbrpwdCb.isChecked())
                     {
-                        SharedPreferences preferences = getSharedPreferences("userdet", Context.MODE_PRIVATE);
-                        preferences.edit().putString("username",entusername).commit();
-                        preferences.edit().putString("password",entpassword).commit();
-
+                        saveUserdetails(entusername,entpassword);
                     }
 
 
+                    usernameet.setText("");
+                    passwordet.setText("");
                     Intent intent = new Intent(MainActivity.this,Main2Activity.class);
                     startActivity(intent);
                 }
@@ -92,6 +94,24 @@ public class MainActivity extends AppCompatActivity {
 
             }
         });
+    }
+
+    public void saveUserdetails(String username,String password)
+    {
+        SharedPreferences preferences = getSharedPreferences("userdet", Context.MODE_PRIVATE);
+        preferences.edit().putString("username",username).commit();
+        preferences.edit().putString("password",password).commit();
+        preferences.edit().putBoolean("saved",true).commit();
+    }
+
+    public boolean readUserDetails()
+    {
+        SharedPreferences preferences = getSharedPreferences("userdet",Context.MODE_PRIVATE);
+       /* usernameet.setText(preferences.getString("username","n/a"));
+        passwordet.setText(preferences.getString("password","n/a"));*/
+
+        boolean status = preferences.getBoolean("saved",false);
+        return status;
     }
 
 
