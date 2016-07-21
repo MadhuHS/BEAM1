@@ -1,0 +1,80 @@
+package com.bluekart.dao;
+
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
+import java.util.ArrayList;
+
+import com.bluekart.model.ProductModel;
+import com.mysql.jdbc.Driver;
+
+public class DAO {
+	public ArrayList<ProductModel> () 
+	{
+		Connection con=null;
+		Statement stmt=null;
+		ResultSet rs=null;
+		
+		ProductModel product;
+		
+	try
+{
+		//1.LOAD THE DRIVER 
+		Driver driveref = new Driver();
+		DriverManager.deregisterDriver(driveref);
+		
+		//2.GET THE DB CONNECTION VIA DRIVER
+		String dburl="jdbc:mysql://localhost:3306/productsdb?user=root&password=root";
+		con=DriverManager.getConnection(dburl);
+		
+		//3.ISSUSE THE SQL QUERIES 
+		String query="select * from products";
+				stmt=con.createStatement();
+				boolean isdbresult=stmt.execute(query);
+				System.out.println(" data present in a table ::"+isdbresult);
+				//process the result
+				if (isdbresult) {
+					 rs=stmt.getResultSet();
+					while (rs.next()) 
+					{
+						product = new ProductModel();
+						product.setID(rs.getInt("PID"));
+                        product.setName(rs.getString("Pname"));
+                        product.setBrand(rs.getString("brand"));
+                        product.setType(rs.getString("type"));
+                        
+                        System.out.println(product);
+             
+					}		
+					}else
+					{
+						System.out.println("result type int count ");
+						int count =stmt.getUpdateCount();
+						System.out.println("rows effected count :"+count);
+					}
+			}
+				catch(SQLException s){
+					s.printStackTrace();
+				}
+				finally{
+					/*
+					 * 5.CLOSE ALL THE DB CONNECTIONS */
+					try{
+						if (con!=null) {
+							con.close();
+						}
+						if (stmt!=null) {
+							stmt.close();
+						}
+						if (rs!=null) {
+							rs.close();
+						}
+					}catch(SQLException e){
+						e.printStackTrace();
+					}
+				}
+			}
+			}
+

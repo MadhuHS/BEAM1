@@ -4,21 +4,22 @@ import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
-import android.util.Log;
-import android.view.View;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
 
-import io.realm.Realm;
-import io.realm.RealmConfiguration;
 import io.realm.RealmResults;
+import realmdb.RealmDbClass;
 
 public class HomeActivity extends AppCompatActivity {
 
     int ID;
     RecyclerView recyclerView;
+    RealmResults<Student> results;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -26,7 +27,12 @@ public class HomeActivity extends AppCompatActivity {
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
-        recyclerView =(RecyclerView)findViewById(R.id.rvstudentlist);
+        results = RealmDbClass.loaddata(HomeActivity.this);
+        recyclerView = (RecyclerView) findViewById(R.id.rvstudentlist);
+        LinearLayoutManager layoutManager = new LinearLayoutManager(HomeActivity.this);
+        layoutManager.setOrientation(LinearLayoutManager.VERTICAL);
+        recyclerView.setLayoutManager(layoutManager);
+        recyclerView.setAdapter(new RecyclerAdapter(HomeActivity.this, results));
 
 
         FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
@@ -34,29 +40,8 @@ public class HomeActivity extends AppCompatActivity {
             @Override
             public void onClick(View view)
             {
-                ++ID;
-              RealmConfiguration configuration =
-                      new RealmConfiguration.Builder(HomeActivity.this).build();
-
-                Realm.setDefaultConfiguration(configuration);
-                Realm realm = Realm.getDefaultInstance();
-
-                realm.beginTransaction();
-                Student s1 = realm.createObject(Student.class);
-                s1.setID(ID);
-                s1.setName("ABC"+ID);
-                s1.setPhone(123456);
-                s1.setEmail("abc@gmail.com");
-                realm.commitTransaction();
-
-               long count = realm.where(Student.class).count();
-                Snackbar.make(view, "Data Saved "+count, Snackbar.LENGTH_LONG).show();
-               RealmResults<Student> results = realm.where(Student.class).findAll();
-
-                for(int i=0;i<results.size();i++)
-                {
-                    Log.d("DEBUG","Student : "+i+results.get(i));
-                }
+                RealmDbClass.addData(111,"ABC",123456,"Emai1@example.com");
+                Snackbar.make(view, "Data Saved " + results.size(), Snackbar.LENGTH_LONG).show();
             }
         });
     }

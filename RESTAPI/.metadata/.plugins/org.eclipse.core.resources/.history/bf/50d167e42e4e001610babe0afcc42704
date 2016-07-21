@@ -1,0 +1,34 @@
+package com.bluekart.controller;
+
+
+import javax.ws.rs.GET;
+import javax.ws.rs.Path;
+import javax.ws.rs.Produces;
+import javax.ws.rs.core.MediaType;
+
+import com.bluekart.model.ProductModel;
+import com.bluekart.model.Response;
+import com.google.gson.Gson;
+
+@Path("/controller")
+public class ProductController 
+{
+  
+   @GET
+   @Path("/getproducts")
+   @Produces(MediaType.APPLICATION_JSON)
+   public String getallproducts()
+   {
+	   Response response = new Response();
+	   ProductModel m1 = 
+	   new ProductModel(1111, "Keyboard", "Dell",102.55,"E");
+	   
+	   response.products.add(m1);
+	   response.setResult(response.products.size());
+	   
+	   Gson gson = new Gson();
+	   String jsonresponse = gson.toJson(response);
+	   
+	   return jsonresponse;
+   }
+}

@@ -1,0 +1,5 @@
+package com.bluekart.model;
+
+public class Response {
+
+}

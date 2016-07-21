@@ -1,0 +1,18 @@
+package com.bluekart.controller;
+
+import javax.ws.rs.GET;
+import javax.ws.rs.Path;
+
+
+
+@Path("/controller")
+public class ProductController 
+{
+  
+   @GET
+   @Path("/getproducts")
+   public String getallproducts()
+   {
+	   return "";
+   }
+}

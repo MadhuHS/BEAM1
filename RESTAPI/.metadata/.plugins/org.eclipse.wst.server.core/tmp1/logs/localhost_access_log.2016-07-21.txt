@@ -1,0 +1,10 @@
+127.0.0.1 - - [21/Jul/2016:09:03:58 +0530] "GET / HTTP/1.1" 404 951
+0:0:0:0:0:0:0:1 - - [21/Jul/2016:09:03:59 +0530] "GET /BluekArt/WEB-INF/classes/com/bluekart/controller/ProductController.java HTTP/1.1" 404 949
+0:0:0:0:0:0:0:1 - - [21/Jul/2016:09:04:20 +0530] "GET /BluekArt/rest/controller/getproducts HTTP/1.1" 200 98
+0:0:0:0:0:0:0:1 - - [21/Jul/2016:09:04:20 +0530] "GET /favicon.ico HTTP/1.1" 404 973
+127.0.0.1 - - [21/Jul/2016:09:20:53 +0530] "GET /BluekArt/rest/controller/getproducts HTTP/1.1" 200 98
+127.0.0.1 - - [21/Jul/2016:09:21:22 +0530] "GET /BluekArt/rest/controller/getproducts HTTP/1.1" 200 98
+0:0:0:0:0:0:0:1 - - [21/Jul/2016:09:23:47 +0530] "GET /BluekArt/rest/controller/getproducts HTTP/1.1" 200 98
+0:0:0:0:0:0:0:1 - - [21/Jul/2016:09:23:48 +0530] "GET /favicon.ico HTTP/1.1" 404 973
+0:0:0:0:0:0:0:1 - - [21/Jul/2016:09:36:53 +0530] "GET /BluekArt/rest/controller/getproducts HTTP/1.1" 200 729
+127.0.0.1 - - [21/Jul/2016:09:40:54 +0530] "GET /BluekArt/rest/controller/getproducts HTTP/1.1" 200 729

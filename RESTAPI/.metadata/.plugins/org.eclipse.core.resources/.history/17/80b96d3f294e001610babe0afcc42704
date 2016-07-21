@@ -1,0 +1,12 @@
+package com.bluekart.model;
+
+public class ProductModel 
+{
+
+   private int ID;
+   private String name;
+   private String brand;
+   private double price;
+   private String type;
+
+}

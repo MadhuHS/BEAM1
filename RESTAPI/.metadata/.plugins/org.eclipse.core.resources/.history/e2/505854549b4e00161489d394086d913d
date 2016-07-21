@@ -1,0 +1,22 @@
+package com.bluekart.model;
+
+import java.util.ArrayList;
+
+public class Response 
+{
+
+  private int result;
+  
+  public ArrayList<ProductModel> products = ;
+
+public int getResult() 
+{
+	return result;
+}
+
+public void setResult(int result) 
+{
+	this.result = result;
+}
+  
+}
