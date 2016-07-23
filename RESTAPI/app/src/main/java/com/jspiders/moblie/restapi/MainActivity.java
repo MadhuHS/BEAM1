@@ -1,5 +1,6 @@
 package com.jspiders.moblie.restapi;
 
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
@@ -21,6 +22,14 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        if(MyReceiver.isOnline()==null)
+        {
+            AlertDialog.Builder builder = new AlertDialog.Builder(MainActivity.this);
+            builder.setTitle("Internet not avilable");
+            builder.setMessage("Please enable internet");
+            builder.create().show();
+        }
+
         AsyncHttpClient client = new AsyncHttpClient();
         client.get(url, new AsyncHttpResponseHandler() {
             @Override
@@ -34,6 +43,7 @@ public class MainActivity extends AppCompatActivity {
 
                 ArrayList<Response.Productlist> list =(ArrayList<Response.Productlist>) response.getProductlist();
                 Response.Productlist productobj = list.get(0);
+
 
                 for (int i = 0; i < list.size(); i++)
                 {
